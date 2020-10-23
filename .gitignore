@@ -1,0 +1,31 @@
+__pycache__/
+.vscode/
+build/
+dist/
+env38win/
+env37win/
+env36win/
+res_test/
+ui/convert_ui2py.bat
+ui/__pycache__
+main1.spec
+main2.spec
+main3.spec
+setup.bat
+setup.1.bat
+install_pip.ps1
+insruction.txt
+icon.ico
+-- SQLite.sql
+database.db
+env install.txt
+afd_config.py
+files/
+test.py
+env/
+__init__
+qt-17-13.py
+qt-17-14.py
+qt-17-15.py
+qt-17-16.py
+qt-17-17.py
