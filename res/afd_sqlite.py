@@ -1,6 +1,5 @@
 import sqlite3
 from pprint import pprint as pp
-from tabulate import tabulate
 from res import afd_ggl
 
 class Work_with_datebase():

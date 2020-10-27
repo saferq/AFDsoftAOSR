@@ -9,7 +9,8 @@ from PyQt5 import uic
 
 class MyWindow(QtWidgets.QWidget):
     """ 
-    Программа AFDsoftAOSR2019 v202010-01
+    Программа AFDsoftAOSR2019 v1.4
+
     Описание Программы
 
     """
@@ -21,58 +22,24 @@ class MyWindow(QtWidgets.QWidget):
         Form, Base = uic.loadUiType("ui//formAOSR.ui")
         self.ui = Form()
         self.ui.setupUi(self)
-        self.ready()
-
-    def ready(self):
-        """Класс TextSplitter используется для разбивки текста на слова
-
-        Основное применение - парсинг логов на отдельные элементы
-        по указанному разделителю.
-
-        Note:
-            Возможны проблемы с кодировкой в Windows
-        
-        Attributes
-        ----------
-        file_path : str
-            полный путь до текстового файла
-        lines : list
-            список строк исходного файла
-
-        Methods
-        -------
-        load()
-            Читает файл и сохраняет его в виде списка строк в lines
-        
-        get_splitted(split_symbol=" ")
-            Разделяет строки списка по указанному разделителю
-            и возвращает результат в виде списка
-        """
         # Выбор рабочей директории
         self.folder_doc = ''
         if self.folder_doc == '':
             self.ui.lbDir.setText(os.path.abspath("") + "\\")
             self.folder_doc = os.path.abspath("") + "\\"
+        # Назначение функций на кнопки
         self.ui.btnDir.clicked.connect(self.choose_dir)
-        # Кнопка для сохранения АКТ
-        self.ui.btnAVK.clicked.connect(self.creat_avk)
-        self.act = main.CreatAct()
+        self.ui.btnACT.clicked.connect(self.creat_act)
 
-    def creat_avk(self):
-        """ Сохранить АВК """
-        print('MyWindow.creat_avk')
-        row_text = self.ui.lineAVK.text()
-        self.act.creat_avk(row_text, self.folder_doc)
-        self.ui.lineAVK.returnPressed.connect(self.ui.btnAVK.click)
-
-    def creat_aosr(self):
+    def creat_act(self):
         """ Сохранить АОСР """
-        print('MyWindow.creat_aosr')
-        txt_qlineAORS = self.ui.lineAOSR.text()
+        print('MyWindow.creat_act')
+        self.act = main.CreatAct()
+        txt_qlineAORS = self.ui.lineACT.text() # Текст в поле номера строк
         if len(txt_qlineAORS) != 0:
             row = self.act.list_numbers(txt_qlineAORS)
             self.act.creat_aosr(row, self.folder_doc)
-        self.ui.lineAOSR.returnPressed.connect(self.ui.btnAOSR.click)
+        self.ui.lineACT.returnPressed.connect(self.ui.btnACT.click)
 
     def choose_dir(self):
         """ выбор директории """

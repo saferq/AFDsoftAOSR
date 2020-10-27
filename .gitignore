@@ -2,6 +2,7 @@ __pycache__/
 .vscode/
 build/
 dist/
+env38_terminal/
 env38win/
 env37win/
 env36win/
